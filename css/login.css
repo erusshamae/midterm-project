@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+* {
+    font-family: 'Roboto', 'Segoe UI';
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    /* background-image: url(home-img.jpg); */
+    background-size: cover;
+    background-position: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+.form-box{
+    width: 500px;
+    background: #79b5ffdd;
+    margin: 12% auto;
+    padding: 50px 0;
+    color: #ff3c00;
+    box-shadow: 0 0 20px 5px rgba(0,0,0,0.5);
+}
+h1{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.input-box{
+    margin: 31px auto;
+    width: 80%;
+    border-bottom: 1px solid #224700;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+.input-box input{
+    width: 90%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #ffffff;
+}
+::placeholder{
+    color: #ff3c00;
+}
+.bi{
+    margin-right: 10px;
+}
+.eye{
+    position: absolute;
+}
+#hide1{
+    display: none;
+}
+.login-btn{
+    margin: 40px auto 20px;
+    width: 80%;
+    display: block;
+    outline: none;
+    padding: 10px 0;
+    border: 3px solid #f47d15;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: #f47d15;
+}
+.link{
+    text-align: center;
+}
+
+    
+    
+    
+
+
+    
+
+
+ 
+
+
+ 
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ 
+
+
+
+    
+
+
+
+    
