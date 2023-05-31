@@ -13,7 +13,7 @@
       </div>
       <div class="input-box">
         <i class="bi bi-envelope"></i>
-        <input type="email" placeholder="Email">
+        <input type="email" placeholder="Email" id="email">
       </div>
       <div class="input-box">
         <i class="bi bi-key"></i>
@@ -36,35 +36,42 @@
       <p id="length"></p>
     </div>
 
-    <script>
-      function validate() {
-        var password = document.getElementById("password");
-        var confirmPassword = document.getElementById("confirmPassword");
-        var length = document.getElementById("length");
+   <script>
+  function validate() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    var length = document.getElementById("length");
 
-        if (password.value.length >= 8 && password.value === confirmPassword.value) {
-          alert("Registration successful");
-          window.location.replace("index.html");
-          return false;
-        } else {
-          alert("Registration failed");
-        }
-      }
-      function myFunction() {
-        var x = document.getElementById("password");
-        var y = document.getElementById("hide1");
-        var z = document.getElementById("hide2");
+    if (password.length >= 8 && password === confirmPassword) {
+      // Store user information in local storage
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
 
-        if (x.type === "password") {
-          x.type = "text";
-          y.style.display = "block";
-          z.style.display = "none";
-        } else {
-          x.type = "password";
-          y.style.display = "none";
-          z.style.display = "block";
-        }
-      }
-    </script>
+      alert("Registration successful");
+      window.location.replace("index.html");
+      return false;
+    } else {
+      alert("Registration failed");
+    }
+  }
+
+  function myFunction() {
+    var x = document.getElementById("password");
+    var y = document.getElementById("hide1");
+    var z = document.getElementById("hide2");
+
+    if (x.type === "password") {
+      x.type = "text";
+      y.style.display = "block";
+      z.style.display = "none";
+    } else {
+      x.type = "password";
+      y.style.display = "none";
+      z.style.display = "block";
+    }
+  }
+</script>
+
   </body>
 </html>

@@ -9,7 +9,8 @@
         <h1>L O G  I N</h1>
         <div class="input-box">
             <i class="F-box"></i>
-            <input type="email" placeholder="Email">
+            <input type="email" placeholder="Email" id="email">
+
         </div>
         <div class="input-box">
             <i class="I-box"></i>
@@ -19,7 +20,7 @@
                 <i id="hide2" class="H2"></i>
         </span>
         </div>
-        <button onclick="validate()" type="button" value="LOGIN" class="login-btn">LOGIN</button>
+        <button type="button" class="login-btn" onclick="validate()">LOGIN</button>
 
       <div class="link">
         <p style="text-align: center;">Don't have an account? <a href="register.html" onclick="register()">Register here.</a></p>
@@ -31,38 +32,51 @@
         <p id="length"></p>
     </div>
 
-        <script>
-            function validate(){
-                var password = document.getElementById("myInput");
-                var length = document.getElementById("length");
+    <script>
+        function validate(){
+            var email = document.getElementById("email");
+            var password = document.getElementById("password");
+            var length = document.getElementById("length");
 
-                if(password.value.length >= 8){
-                    window.location.replace("home.html");
-                    return false;
-                }
-                else{
-                    alert("Login Error");
-                }
+            var emailvalue=localStorage.getItem('email')
+            var passwordvalue=localStorage.getItem('password')
 
-                
+            if(password.value.length >= 8){
+                window.location.replace("home.html");
+                return false;
+            // } else if(!emailRegex.test(email)){
+            //     window.alert('Invalid email!');
+            //     return;
+            } else if (email.value== emailvalue && password.value==passwordvalue){
+                window.location.href="home.html";
+            
+          
+            } else{
+                alert("Login Failed");
             }
-            function myFunction(){
-                var x = document.getElementById("myInput");
-                var y = document.getElementById("hide1");
-                var z = document.getElementById("hide2");
+        }
+        
+            
+        
+        function myFunction(){
+            var x = document.getElementById("password");
+            var y = document.getElementById("hide1");
+            var z = document.getElementById("hide2");
 
-                if(x.type === 'password'){
-                    x.type = "text";
-                    y.style.display = "block";
-                    z.style.display = "none";
-                }
-                else{
-                    x.type = "password";
-                    y.style.display = "none";
-                    z.style.display = "block";
-                }
+            if(x.type === 'password'){
+                x.type = "text";
+                y.style.display = "block";
+                z.style.display = "none";
             }
-        </script>
+            else{
+                x.type = "password";
+                y.style.display = "none";
+                z.style.display = "block";
+            }
+        }
+    </script>
+
+
 
     </body>
 

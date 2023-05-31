@@ -32,5 +32,5 @@ document.querySelectorAll('a').forEach(links =>{
         cursor1.classList.remove('active');
         cursor2.classList.remove('active');
     }
-
+    
 });
