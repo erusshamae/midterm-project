@@ -1,81 +1,82 @@
 <html>
-    <head>
-        <title>LOG IN</title>
-        <link rel="stylesheet" href="css/login.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-    </head>
-    <body>
-    <div class="form-box">
-        <h1>L O G  I N</h1>
-        <div class="input-box">
-            <i class="F-box"></i>
-            <input type="email" id="email" placeholder="Email">
-        </div>
-        <div class="input-box">
-            <i class="I-box"></i>
-            <input type="password" id="password" placeholder="Password">
+<head>
+    <title>LOG IN</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+</head>
+<body>
+<div class="form-box">
+    <h1>L O G  I N</h1>
+    <div class="input-box">
+        <i class="F-box"></i>
+        <input type="email" id="email" placeholder="Email">
+    </div>
+    <div class="input-box">
+        <i class="I-box"></i>
+        <input type="password" id="password" placeholder="Password">
 
-            <span class="eye" onclick="myFunction()">
-                <i id="hide1" class="H1"></i>
-                <i id="hide2" class="H2"></i>
+        <span class="eye" onclick="togglePasswordVisibility()">
+            <i id="hide1" class="H1"></i>
+            <i id="hide2" class="H2"></i>
         </span>
-        </div>
-        <button type="button" class="login-btn" onclick="validate()">LOGIN</button>
+    </div>
+    <button type="button" class="login-btn" onclick="validate()">LOGIN</button>
 
-      <div class="link">
+    <div class="link">
         <p style="text-align: center;">Don't have an account? <a href="register.html" onclick="register()">Register here.</a></p>
-      </div>
-        
-       
     </div>
-    <div>
-        <p id="length"></p>
-    </div>
+</div>
+<div>
+    <p id="length"></p>
+</div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            function validate() {
-                var email = document.getElementById("email");
-                var password = document.getElementById("password");
-                var length = document.getElementById("length");
-    
-                var emailValue = localStorage.getItem('email');
-                var passwordValue = localStorage.getItem('password');
-    
-                if (password.value.length >= 8) {
-                    window.location.replace("home.html");
-                    return false;
-                } else if (email.value == emailValue && password.value == passwordValue) {
-                    localStorage.setItem('email', email.value);
-                    localStorage.setItem('password', password.value);
-                    window.location.href = "member.html";
-                } else {
-                    alert("Login Failed");
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function validate() {
+            var email = document.getElementById("email");
+            var password = document.getElementById("password");
+
+            var emailValue = localStorage.getItem('email');
+            var passwordValue = localStorage.getItem('password');
+
+            if (password.value.length >= 8 && email.value === emailValue && password.value === passwordValue) {
+                localStorage.setItem('email', email.value);
+                localStorage.setItem('password', password.value);
+
+                alert("Login successful!");
+                window.location.href = "home.html";
+            } else {
+                var errorMessage = "Login failed. Please check the following:\n\n";
+              if (email.value !== emailValue) {
+                    errorMessage += "- Invalid email input!\n";
                 }
-            }
-    
-            function myFunction() {
-                var x = document.getElementById("password");
-                var y = document.getElementById("hide1");
-                var z = document.getElementById("hide2");
-    
-                if (x.type === 'password') {
-                    x.type = "text";
-                    y.style.display = "block";
-                    z.style.display = "none";
-                } else {
-                    x.type = "password";
-                    y.style.display = "none";
-                    z.style.display = "block";
+              if (password.value.length < 8) {
+                    errorMessage += "- Password should be at least 8 characters long!\n";
                 }
+                alert(errorMessage);
             }
-    
-            // Attach event listener to the login button
+        }
+
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            var hide1Icon = document.getElementById("hide1");
+            var hide2Icon = document.getElementById("hide2");
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = "text";
+                hide1Icon.style.display = "block";
+                hide2Icon.style.display = "none";
+            } else {
+                passwordInput.type = "password";
+                hide1Icon.style.display = "none";
+                hide2Icon.style.display = "block";
+            }
+        }
+
             var loginBtn = document.querySelector(".login-btn");
             loginBtn.addEventListener("click", validate);
-        });
-    </script>
-    
-    </body>
+    });
+</script>
 
+</body>
 </html>
