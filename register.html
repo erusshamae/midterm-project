@@ -42,17 +42,33 @@
     var password = document.getElementById("password").value;
     var confirmPassword = document.getElementById("confirmPassword").value;
     var length = document.getElementById("length");
+    
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
 
-    if (password.length >= 8 && password === confirmPassword) {
-      // Store user information in local storage
+    if (password.length >= 8 && password === confirmPassword && emailRegex.test(email)) {
+
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
 
-      alert("Registration successful");
+      alert("Registration successful!");
       window.location.replace("index.html");
       return false;
     } else {
-      alert("Registration failed");
+      var errorMessage = "Registration failed. Please check the following:\n\n";
+
+      if (!emailRegex.test(email)) {
+        errorMessage += "- Invalid email format!\n";
+      }
+
+      if (password.length < 8) {
+        errorMessage += "- Password should be at least 8 characters long!\n";
+      }
+      
+      if (password !== confirmPassword) {
+        errorMessage += "- Password and Confirm Password do not match!\n";
+      }
+      
+      alert(errorMessage);
     }
   }
 
