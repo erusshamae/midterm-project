@@ -9,12 +9,12 @@
         <h1>L O G  I N</h1>
         <div class="input-box">
             <i class="F-box"></i>
-            <input type="email" placeholder="Email" id="email">
-
+            <input type="email" id="email" placeholder="Email">
         </div>
         <div class="input-box">
             <i class="I-box"></i>
-            <input type="password" placeholder="Password (8 Characters)" id="myInput">
+            <input type="password" id="password" placeholder="Password">
+
             <span class="eye" onclick="myFunction()">
                 <i id="hide1" class="H1"></i>
                 <i id="hide2" class="H2"></i>
@@ -33,51 +33,49 @@
     </div>
 
     <script>
-        function validate(){
-            var email = document.getElementById("email");
-            var password = document.getElementById("password");
-            var length = document.getElementById("length");
-
-            var emailvalue=localStorage.getItem('email')
-            var passwordvalue=localStorage.getItem('password')
-
-            if(password.value.length >= 8){
-                window.location.replace("home.html");
-                return false;
-            // } else if(!emailRegex.test(email)){
-            //     window.alert('Invalid email!');
-            //     return;
-            } else if (email.value== emailvalue && password.value==passwordvalue){
-                window.location.href="home.html";
-            
-          
-            } else{
-                alert("Login Failed");
+        document.addEventListener("DOMContentLoaded", function() {
+            function validate() {
+                var email = document.getElementById("email");
+                var password = document.getElementById("password");
+                var length = document.getElementById("length");
+    
+                var emailValue = localStorage.getItem('email');
+                var passwordValue = localStorage.getItem('password');
+    
+                if (password.value.length >= 8) {
+                    window.location.replace("home.html");
+                    return false;
+                } else if (email.value == emailValue && password.value == passwordValue) {
+                    localStorage.setItem('email', email.value);
+                    localStorage.setItem('password', password.value);
+                    window.location.href = "member.html";
+                } else {
+                    alert("Login Failed");
+                }
             }
-        }
-        
-            
-        
-        function myFunction(){
-            var x = document.getElementById("password");
-            var y = document.getElementById("hide1");
-            var z = document.getElementById("hide2");
-
-            if(x.type === 'password'){
-                x.type = "text";
-                y.style.display = "block";
-                z.style.display = "none";
+    
+            function myFunction() {
+                var x = document.getElementById("password");
+                var y = document.getElementById("hide1");
+                var z = document.getElementById("hide2");
+    
+                if (x.type === 'password') {
+                    x.type = "text";
+                    y.style.display = "block";
+                    z.style.display = "none";
+                } else {
+                    x.type = "password";
+                    y.style.display = "none";
+                    z.style.display = "block";
+                }
             }
-            else{
-                x.type = "password";
-                y.style.display = "none";
-                z.style.display = "block";
-            }
-        }
+    
+            // Attach event listener to the login button
+            var loginBtn = document.querySelector(".login-btn");
+            loginBtn.addEventListener("click", validate);
+        });
     </script>
-
-
-
+    
     </body>
 
 </html>
